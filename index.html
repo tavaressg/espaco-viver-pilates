@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="description" content="Protótipo do site do Espaço Viver, pilates e fisioterapia em Pedro Leopoldo e Matozinhos.">
+<style>img{max-width:100%}[hidden]{display:none!important}body{margin:0}</style>
+<title>Espaço Viver Pilates</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap">
+<style>
+/* Cuidado com método: coluna de texto à esquerda, fotos em preto e branco, faixa lilás para as três unidades. */
+:root {
+  --gesso: #F3F4F1;
+  --grafite: #1F2523;
+  --pinho: #1E4A3B;
+  --sobre-pinho: #FFFFFF;
+  --lilas: #DCCFE6;
+  --musgo: #56625C;
+  --foto: #2A302D;
+  --sobre-foto: #F3F4F1;
+  --linha: #D5D9D3;
+  --sans: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --secao: 64px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --gesso: #141917; --grafite: #E9ECE8; --pinho: #8CC4A8; --sobre-pinho: #141917;
+    --lilas: #2E2838; --musgo: #A3AFA8; --foto: #0E1110; --sobre-foto: #E9ECE8; --linha: #2C3330; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --gesso: #141917; --grafite: #E9ECE8; --pinho: #8CC4A8; --sobre-pinho: #141917;
+  --lilas: #2E2838; --musgo: #A3AFA8; --foto: #0E1110; --sobre-foto: #E9ECE8; --linha: #2C3330; color-scheme: dark;
+}
+@media (min-width: 1024px) { :root { --secao: 96px; } }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body { background: var(--gesso); color: var(--grafite); font: 400 16px/1.7 var(--sans); -webkit-font-smoothing: antialiased; }
+@media (min-width: 1024px) { body { font-size: 17px; } }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--gesso); }
+
+.gutter { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 1180px; margin: 0 auto; }
+h1, h2, h3 { font-weight: 300; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h2 { font-size: clamp(30px, 5vw, 44px); line-height: 1.1; }
+h3 { font-weight: 500; font-size: 18px; line-height: 1.3; letter-spacing: 0; }
+p { margin: 0; }
+a { color: var(--pinho); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:focus-visible { outline: 2px solid var(--pinho); outline-offset: 3px; border-radius: 2px; }
+.pendente { color: var(--musgo); background: color-mix(in srgb, var(--lilas) 55%, transparent); padding: 0 4px; border-radius: 2px; }
+.secundario { color: var(--musgo); font-size: 15px; }
+section { padding-block: var(--secao); scroll-margin-top: 60px; }
+.cabeca { display: grid; gap: 12px; margin-bottom: 40px; max-width: 60ch; }
+
+.aviso { background: var(--grafite); color: var(--gesso); font-size: 13px; padding-block: 8px; text-align: center; }
+
+/* Cabeçalho */
+header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--gesso); border-bottom: 1px solid var(--linha); }
+header .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+.marca { color: var(--pinho); text-decoration: none; font-weight: 600; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.15; }
+.marca small { display: block; font-weight: 500; font-size: 12px; letter-spacing: 0.1em; color: var(--musgo); }
+nav { display: flex; gap: 24px; align-items: center; }
+nav a { color: var(--grafite); text-decoration: none; padding-block: 8px; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+nav a:hover { color: var(--pinho); }
+nav .ancora { display: none; }
+nav .whats { color: var(--pinho); font-weight: 600; }
+@media (min-width: 1024px) { nav .ancora { display: inline; } }
+
+/* Fotos reservadas */
+.foto { background: var(--foto); display: flex; align-items: flex-end; max-width: 100%; }
+.foto span { font-size: 12px; line-height: 1.4; color: color-mix(in srgb, var(--sobre-foto) 65%, transparent); padding: 10px 12px; }
+.foto.clara { background: var(--linha); }
+.foto.clara span { color: var(--musgo); }
+
+/* Abertura */
+.abertura { display: grid; gap: 32px; padding-block: 32px var(--secao); }
+.abertura .foto { aspect-ratio: 4 / 3; order: 2; }
+.abertura .texto { display: grid; gap: 20px; align-content: center; }
+.abertura h1 { font-size: clamp(36px, 6vw, 64px); line-height: 1.06; max-width: 14ch; animation: entra 600ms ease-out both; }
+.abertura p { max-width: 38ch; font-size: 18px; }
+@keyframes entra { from { opacity: .001; transform: translateY(12px); } }
+@media (min-width: 1024px) {
+  .abertura { grid-template-columns: 5fr 6fr; gap: 64px; padding-top: 48px; }
+  .abertura .foto { aspect-ratio: 5 / 6; }
+}
+.botao { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; background: var(--pinho); color: var(--sobre-pinho); text-decoration: none; font-weight: 600; font-size: 15px; border-radius: 2px; justify-self: start; transition: opacity 200ms; }
+.botao:hover { opacity: .9; }
+
+/* Listas com linhas */
+.linhas { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linha); }
+.linhas li { display: grid; gap: 4px; padding-block: 18px; border-bottom: 1px solid var(--linha); }
+
+/* Para quem */
+.para-quem li { gap: 6px; padding-block: 24px; }
+.para-quem h3 { color: var(--pinho); font-size: 20px; }
+.para-quem .indicado { color: var(--musgo); font-size: 14px; }
+.para-quem .indicado a { color: inherit; }
+@media (min-width: 1024px) { .para-quem .linhas { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; border-top: 0; } .para-quem li:nth-child(-n+2) { border-top: 1px solid var(--linha); } }
+
+/* Serviços */
+.grupos { display: grid; gap: 48px; }
+.grupos h3 { color: var(--pinho); margin-bottom: 12px; }
+.servicos li { grid-template-columns: 1fr; }
+.servicos .onde { color: var(--musgo); font-size: 14px; }
+@media (min-width: 1024px) { .grupos { grid-template-columns: 1fr 1fr; gap: 64px; } }
+
+/* Unidades */
+.unidades { background: var(--lilas); }
+.lista-unidades { display: grid; gap: 0; border-top: 1px solid color-mix(in srgb, var(--grafite) 20%, transparent); }
+.unidade { display: grid; gap: 8px; padding-block: 24px; border-bottom: 1px solid color-mix(in srgb, var(--grafite) 20%, transparent); align-content: start; }
+.unidade h3 { font-size: 22px; font-weight: 400; }
+.unidade a { color: var(--grafite); }
+@media (min-width: 1024px) {
+  .lista-unidades { grid-template-columns: repeat(3, 1fr); gap: 48px; border-top: 0; }
+  .unidade { border-bottom: 0; border-top: 1px solid color-mix(in srgb, var(--grafite) 20%, transparent); }
+}
+
+/* Equipe */
+.equipe { display: grid; gap: 24px; list-style: none; margin: 0; padding: 0; }
+.equipe li { display: grid; grid-template-columns: 72px 1fr; gap: 16px; align-items: center; }
+.equipe .foto { aspect-ratio: 1; }
+.equipe .foto span { font-size: 10px; padding: 6px; }
+.equipe p { font-size: 15px; color: var(--musgo); line-height: 1.5; }
+@media (min-width: 768px) { .equipe { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .equipe { grid-template-columns: repeat(3, 1fr); gap: 32px; } }
+
+/* Avaliações */
+.avaliacoes { display: grid; gap: 32px; }
+.nota { display: flex; align-items: baseline; gap: 16px; }
+.nota .numero { font-weight: 300; font-size: clamp(64px, 12vw, 104px); line-height: 1; color: var(--pinho); font-variant-numeric: tabular-nums; }
+.nota p { color: var(--musgo); font-size: 15px; }
+.citacoes { display: grid; gap: 28px; }
+.citacoes blockquote { margin: 0; display: grid; gap: 8px; max-width: 40ch; }
+.citacoes blockquote p { font-weight: 300; font-size: clamp(20px, 2.6vw, 24px); line-height: 1.4; }
+.citacoes cite { font-style: normal; color: var(--musgo); font-size: 14px; }
+.acoes { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+.avaliacoes > h2 { grid-column: 1 / -1; }
+@media (min-width: 1024px) { .avaliacoes { grid-template-columns: 1fr 1.4fr; align-items: start; } .acoes { grid-column: 1 / -1; } }
+
+/* Contato */
+.contato .wrap { display: grid; gap: 24px; border-top: 1px solid var(--linha); padding-top: 48px; }
+.contato .texto { display: grid; gap: 16px; max-width: 34ch; }
+.contato .numero-whats { font-size: 20px; font-variant-numeric: tabular-nums; user-select: all; }
+@media (max-width: 1023px) { .contato .botao { width: 100%; } }
+@media (min-width: 1024px) { .contato .wrap { grid-template-columns: 1fr auto; align-items: end; } }
+
+footer { padding-block: 40px; font-size: 14px; color: var(--musgo); }
+footer .wrap { display: grid; gap: 16px; }
+@media (min-width: 768px) { footer .wrap { grid-template-columns: 1fr auto; align-items: end; } }
+</style>
+</head>
+<body>
+
+<div class="aviso gutter">Protótipo para aprovação. As fotos são espaços reservados, e o que está entre colchetes depende de confirmação.</div>
+
+<header class="gutter">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Espaço Viver, voltar ao início">Espaço Viver<small>Pilates e fisioterapia</small></a>
+    <nav aria-label="Principal">
+      <a class="ancora" href="#servicos">Serviços</a>
+      <a class="ancora" href="#unidades">Unidades</a>
+      <a class="ancora" href="#equipe">Equipe</a>
+      <a class="whats" href="https://wa.me/5531986932067?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Espa%C3%A7o%20Viver%20e%20queria%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="gutter">
+    <div class="wrap abertura">
+      <div class="foto" role="img" aria-label="Espaço reservado para foto em preto e branco de uma aula no Cadillac"><span>Foto em preto e branco: aula no Cadillac</span></div>
+      <div class="texto">
+        <h1>Pilates e fisioterapia em Pedro Leopoldo e Matozinhos.</h1>
+        <p>Há mais de 10 anos tratando dor e devolvendo movimento, com acompanhamento de fisioterapeutas. <span class="pendente">[confirmar como funciona nas aulas]</span></p>
+        <a class="botao" href="https://wa.me/5531986932067?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Espa%C3%A7o%20Viver%20e%20queria%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="gutter para-quem" aria-labelledby="t-para-quem">
+    <div class="wrap">
+      <div class="cabeca"><h2 id="t-para-quem">Indicações</h2><p class="secundario">Na primeira avaliação, a fisioterapeuta indica o melhor caminho para o seu caso. <span class="pendente">[confirmar]</span></p></div>
+      <ul class="linhas">
+        <li><h3>Dor e lesões</h3><p>Dor nas costas, no joelho ou no ombro, ou recuperação depois de uma fratura.</p><p class="indicado">Indicado: <a href="#servicos">fisioterapia e pilates</a></p></li>
+        <li><h3>Gestação</h3><p>Exercícios adaptados a cada fase da gravidez.</p><p class="indicado">Indicado: <a href="#servicos">pilates para gestantes</a></p></li>
+        <li><h3>Força e mobilidade</h3><p>Para quem quer treinar o corpo inteiro com controle, inclusive homens.</p><p class="indicado">Indicado: <a href="#servicos">pilates</a></p></li>
+        <li><h3>Tensão e cansaço</h3><p>Para aliviar a musculatura carregada e descansar.</p><p class="indicado">Indicado: <a href="#servicos">massagem, acupuntura e auriculoterapia</a></p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="servicos" class="gutter">
+    <div class="wrap">
+      <div class="cabeca"><h2>Serviços</h2><p class="secundario">Os serviços variam por unidade. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+      <div class="grupos">
+        <div>
+          <h3>Movimento</h3>
+          <ul class="linhas servicos">
+            <li><strong>Pilates</strong><span>Exercícios nos aparelhos, como o Cadillac, para força, postura e mobilidade. Também para gestantes.</span><span class="onde">Unidades 1 e 2 <span class="pendente">[Matozinhos]</span></span></li>
+            <li><strong>Fisioterapia</strong><span>Avaliação e tratamento de dores e lesões, da coluna à recuperação depois de uma fratura.</span><span class="onde">Unidades 1 e 2 <span class="pendente">[Matozinhos]</span></span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Terapias</h3>
+          <ul class="linhas servicos">
+            <li><strong>Acupuntura</strong><span>Agulhas finas em pontos específicos, para dor e relaxamento.</span><span class="onde">Unidade 1</span></li>
+            <li><strong>Auriculoterapia</strong><span>Estímulo de pontos da orelha com sementes ou agulhas.</span><span class="onde">Unidade 1</span></li>
+            <li><strong>Ventosaterapia</strong><span>Copos de sucção sobre a pele para aliviar a tensão muscular.</span><span class="onde">Unidade 1</span></li>
+            <li><strong>Massoterapia e massagem relaxante</strong><span>Massagem para tratar a musculatura ou só para descansar.</span><span class="onde">Unidade 1</span></li>
+            <li><strong>Drenagem linfática</strong><span>Massagem suave que ajuda a reduzir o inchaço.</span><span class="onde">Unidade 1</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="unidades" class="gutter unidades">
+    <div class="wrap">
+      <div class="cabeca"><h2>Três unidades</h2></div>
+      <div class="lista-unidades">
+        <div class="unidade">
+          <h3>Pedro Leopoldo, Unidade 1</h3>
+          <p>Av. Heitor Cláudio de Sales, 354 <span class="pendente">[bairro]</span></p>
+          <p>Todos os serviços</p>
+          <p><span class="pendente">[horários]</span></p>
+          <a href="https://www.google.com/maps/search/?api=1&query=Av.+Heitor+Cl%C3%A1udio+de+Sales+354+Pedro+Leopoldo" target="_blank" rel="noopener">Como chegar</a>
+        </div>
+        <div class="unidade">
+          <h3>Pedro Leopoldo, Unidade 2</h3>
+          <p>R. Ver. Magno Claret Vieira, 567 <span class="pendente">[Lagoa Santo Antônio?]</span></p>
+          <p>Pilates e fisioterapia</p>
+          <p><span class="pendente">[horários]</span></p>
+          <a href="https://www.google.com/maps/search/?api=1&query=Rua+Vereador+Magno+Claret+Vieira+567+Pedro+Leopoldo" target="_blank" rel="noopener">Como chegar</a>
+        </div>
+        <div class="unidade">
+          <h3>Matozinhos</h3>
+          <p>Unidade nova</p>
+          <p><span class="pendente">[endereço e serviços]</span></p>
+          <p><span class="pendente">[horários]</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="equipe" class="gutter">
+    <div class="wrap">
+      <div class="cabeca"><h2>Quem atende</h2><p class="secundario">Equipe listada no site atual. <span class="pendente">[confirmar equipe e Crefito]</span></p></div>
+      <ul class="equipe">
+        <li><div class="foto clara" role="img" aria-label="Espaço reservado para foto"><span>Foto</span></div><div><h3>Dra. Sarah Teodoro</h3><p>Fisioterapeuta e acupunturista<br>Unidade 1</p></div></li>
+        <li><div class="foto clara" role="img" aria-label="Espaço reservado para foto"><span>Foto</span></div><div><h3>Alice Lorena</h3><p>Educadora física, massoterapeuta e acupunturista<br>Unidade 1</p></div></li>
+        <li><div class="foto clara" role="img" aria-label="Espaço reservado para foto"><span>Foto</span></div><div><h3>Dra. Thaís Carvalho</h3><p>Fisioterapeuta<br>Unidade 2</p></div></li>
+        <li><div class="foto clara" role="img" aria-label="Espaço reservado para foto"><span>Foto</span></div><div><h3>Dra. Amanda Teixeira</h3><p>Fisioterapeuta<br>Unidade 2</p></div></li>
+        <li><div class="foto clara" role="img" aria-label="Espaço reservado para foto"><span>Foto</span></div><div><h3>Dra. Ana Elisa</h3><p>Fisioterapeuta<br>Unidade 2</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="avaliacoes" class="gutter">
+    <div class="wrap avaliacoes">
+      <h2>O que dizem no Google</h2>
+      <div class="nota">
+        <span class="numero">5,0</span>
+        <p>de 5 no Google<br>116 avaliações nas duas unidades de Pedro Leopoldo, em outubro de 2026</p>
+      </div>
+      <div class="citacoes">
+        <blockquote><p>“Já faz mais de 2 anos que estou fazendo pilates e gosto muito.”</p><cite>Avaliação no Google, Unidade 1</cite></blockquote>
+        <blockquote><p>“No Espaço Viver, tive excelente acompanhamento desde o primeiro dia!”</p><cite>Avaliação no Google, Unidade 2</cite></blockquote>
+      </div>
+      <div class="acoes">
+        <a href="https://www.google.com/maps/search/Espa%C3%A7o+Viver+Pilates+e+Acupuntura+Av.+Heitor+Cl%C3%A1udio+de+Sales+354" target="_blank" rel="noopener">Avaliações da Unidade 1</a>
+        <a href="https://www.google.com/maps/search/Pilates+Espa%C3%A7o+Viver+Acupuntura+Pedro+Leopoldo+Unidade+2" target="_blank" rel="noopener">Avaliações da Unidade 2</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="gutter contato">
+    <div class="wrap">
+      <div class="texto">
+        <h2>A primeira conversa é pelo WhatsApp.</h2>
+        <p>Conte o que você sente e qual unidade fica melhor para você.</p>
+        <p class="numero-whats">(31) 98693-2067</p>
+      </div>
+      <a class="botao" href="https://wa.me/5531986932067?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Espa%C3%A7o%20Viver%20e%20queria%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Conversar no WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer class="gutter">
+  <div class="wrap">
+    <div>Espaço Viver, pilates, fisioterapia e acupuntura<br>Pedro Leopoldo e Matozinhos, MG<br>© 2026</div>
+    <a href="https://www.instagram.com/espaco_viverpilates/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</footer>
+
+</body>
+</html>
